@@ -1,0 +1,9 @@
+# Downloaded images (manage these separately)
+cyberpunk rider/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Legacy catalog file (replaced by entries.json)
+catalog.md

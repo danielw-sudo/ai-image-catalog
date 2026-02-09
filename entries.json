@@ -1,0 +1,56 @@
+[
+  {
+    "slug": "cosmic-jellyfish",
+    "title": "Cosmic Jellyfish",
+    "imageUrl": "https://picsum.photos/seed/jellyfish/800/600",
+    "platform": "Gemini",
+    "date": "2025-02-08",
+    "tags": "digital art, space, creatures",
+    "prompt": "A bioluminescent jellyfish floating through a nebula in deep space, with trailing tentacles made of starlight, ultra-detailed digital art, dark background with vibrant purples and blues"
+  },
+  {
+    "slug": "neon-city-rain",
+    "title": "Neon City Rain",
+    "imageUrl": "https://picsum.photos/seed/neonrain/800/600",
+    "platform": "Grok",
+    "date": "2025-02-08",
+    "tags": "cyberpunk, urban, night",
+    "prompt": "A rain-soaked cyberpunk street at night with neon signs reflecting in puddles, a lone figure with an umbrella walking away from the camera, cinematic lighting, wide angle shot"
+  },
+  {
+    "slug": "ancient-library",
+    "title": "Ancient Library",
+    "imageUrl": "https://picsum.photos/seed/library/800/600",
+    "platform": "Meta AI",
+    "date": "2025-02-08",
+    "tags": "fantasy, architecture, books",
+    "prompt": "An impossibly tall ancient library with floating books and magical glowing orbs illuminating the shelves, warm golden light streaming through stained glass windows, fantasy concept art style"
+  },
+  {
+    "slug": "cyberpunk-portrait",
+    "title": "Cyberpunk Portrait",
+    "imageUrl": "https://scontent.fyvr3-1.fna.fbcdn.net/o1/v/t0/f2/m421/AQMAXB9jsHAToPVR4NqMmvO4tVoP6HrbERNhGk6J89qBPgGumD4pbKxf2waEVJR1hjuWN_p0NRObG5TQ-8udR-R9ut3FmK_KTMjQ4hOzQWc2OXfcMwaZOHwTQt_z8P_vgX2QdYuZVPQu7qX0-AtZfZv8AYjX0g.jpeg?_nc_ht=scontent.fyvr3-1.fna.fbcdn.net&_nc_gid=8DTrovdE64OOxPcuyptSlw&_nc_cat=109&_nc_oc=AdnKVb-oH6-SPi09gO-C5NooTjGwuufoAz5DnslvjgBw7_Sot3H8Yd__UZswmfkWBO0&ccb=9-4&oh=00_AfvduDGafal3Jyxj-jjmDXtSSV-7hEGHjiN-2I5afkQGpQ&oe=698B5C3C&_nc_sid=5b3566",
+    "platform": "Meta AI",
+    "date": "2026-02-09",
+    "tags": "",
+    "prompt": "face of beautiful cyberpunk woman covered glowing matrix and circuits, colourful."
+  },
+  {
+    "slug": "noir-style-glamour",
+    "title": "Noir-style Glamour",
+    "imageUrl": "https://imagine-public.x.ai/imagine-public/images/f324eb24-cf99-43a9-872d-5c9e0ed4058e.jpg?cache=1&dl=1",
+    "platform": "Grok",
+    "date": "2026-02-09",
+    "tags": "Glamour, Vintage, 1950",
+    "prompt": "A beauty in a Noir-style fashion portrait, standing by a limousine in a rainy Hollywood street."
+  },
+  {
+    "slug": "84-charing-cross-road",
+    "title": "84, Charing Cross Road",
+    "imageUrl": "https://gemini.google.com/share/bfd7f40f472d",
+    "platform": "Gemini",
+    "date": "2026-02-09",
+    "tags": "MovieStill",
+    "prompt": "Movie still of \"84, Charing Cross Road\" (1987, British movie): A beautiful young lady ( Olivia Hussey in her early 20s )standing before a vintage bookshelf in the book store, reading an ancient book. She is beautiful, elegant, innocent, graceful, glamorous, looking at the book. Dramatic lighting, soft light emphasizes her beautiful face."
+  }
+]

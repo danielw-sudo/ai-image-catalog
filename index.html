@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Image Catalog</title>
+  <meta name="description" content="A curated collection of AI-generated images with prompts">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>AI Image Catalog</h1>
+    <p class="subtitle">A curated collection of AI-generated images with prompts</p>
+    <div class="header-stats">
+      <span id="entry-count">0 entries</span>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="toolbar-left">
+      <input type="text" class="search-input" id="search" placeholder="Search prompts, titles, tags...">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-platform="all">All</button>
+        <button class="filter-btn" data-platform="Gemini">Gemini</button>
+        <button class="filter-btn" data-platform="Grok">Grok</button>
+        <button class="filter-btn" data-platform="Meta AI">Meta AI</button>
+      </div>
+    </div>
+    <div class="toolbar-right">
+      <button class="settings-btn" id="settings-toggle" title="GitHub Settings">
+        <span class="status-dot" id="status-dot"></span>
+        <span class="status-text" id="status-text">Not connected</span>
+      </button>
+      <button class="add-btn" id="toggle-form">+ Add Entry</button>
+    </div>
+  </div>
+
+  <!-- Settings Panel -->
+  <div class="settings-panel" id="settings-panel">
+    <div class="settings-container">
+      <h2>GitHub Settings</h2>
+      <p class="settings-description">Connect to your GitHub repo to save entries directly from the browser. Your token is stored locally in this browser only.</p>
+      <div class="settings-grid">
+        <div class="form-group">
+          <label for="settings-owner">GitHub Username</label>
+          <input type="text" id="settings-owner" placeholder="your-username">
+        </div>
+        <div class="form-group">
+          <label for="settings-repo">Repository Name</label>
+          <input type="text" id="settings-repo" placeholder="ai-image-catalog">
+        </div>
+        <div class="form-group">
+          <label for="settings-branch">Branch</label>
+          <input type="text" id="settings-branch" placeholder="main" value="main">
+        </div>
+        <div class="form-group">
+          <label for="settings-token">Personal Access Token</label>
+          <input type="password" id="settings-token" placeholder="ghp_xxxxxxxxxxxx">
+        </div>
+      </div>
+      <p class="settings-hint">Need a token? Go to GitHub &gt; Settings &gt; Developer settings &gt; Personal access tokens &gt; Fine-grained tokens. Grant <strong>Contents: Read and write</strong> access to your repo.</p>
+      <div class="settings-actions">
+        <button class="btn btn-secondary" id="test-conn-btn">Test Connection</button>
+        <button class="btn btn-primary" id="save-settings-btn">Save Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Entry Form -->
+  <div class="form-panel" id="form-panel">
+    <div class="form-container">
+      <h2>Add New Entry</h2>
+      <p class="form-description">Fill in the details below, then save to GitHub or download the files.</p>
+      <form id="entry-form" onsubmit="return false;">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="entry-title">Title *</label>
+            <input type="text" id="entry-title" placeholder="e.g. Cosmic Jellyfish" required>
+          </div>
+          <div class="form-group">
+            <label for="entry-platform">Platform *</label>
+            <select id="entry-platform" required>
+              <option value="">Select platform...</option>
+              <option value="Gemini">Gemini</option>
+              <option value="Grok">Grok</option>
+              <option value="Meta AI">Meta AI</option>
+              <option value="ChatGPT / DALL-E">ChatGPT / DALL-E</option>
+              <option value="Midjourney">Midjourney</option>
+              <option value="Stable Diffusion">Stable Diffusion</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="entry-image">Image URL *</label>
+            <input type="text" id="entry-image" placeholder="https://... or images/filename.png" required>
+          </div>
+          <div class="form-group">
+            <label for="entry-date">Date</label>
+            <input type="date" id="entry-date">
+          </div>
+          <div class="form-group full-width">
+            <label for="entry-tags">Tags <span class="optional">(comma separated)</span></label>
+            <input type="text" id="entry-tags" placeholder="e.g. landscape, photorealistic, fantasy">
+          </div>
+          <div class="form-group full-width">
+            <label for="entry-prompt">Prompt *</label>
+            <textarea id="entry-prompt" rows="4" placeholder="The prompt you used to generate this image..." required></textarea>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="preview-btn">Preview</button>
+          <button type="button" class="btn btn-secondary" id="copy-btn">Copy Markdown</button>
+          <div class="form-actions-spacer"></div>
+          <button type="button" class="btn btn-save" id="download-btn">Download Files</button>
+          <button type="button" class="btn btn-github" id="github-save-btn" disabled>Save to GitHub</button>
+        </div>
+      </form>
+      <div class="markdown-output" id="markdown-output">
+        <div class="output-header">
+          <span>Generated Markdown</span>
+          <button class="btn-small" id="copy-again-btn">Copy</button>
+        </div>
+        <pre><code id="md-preview"></code></pre>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <div class="catalog-grid" id="catalog-grid"></div>
+    <div class="empty-state" id="empty-state" style="display: none;">
+      <p>No entries found matching your search.</p>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,14 +1,5 @@
 [
   {
-    "slug": "cosmic-jellyfish",
-    "title": "Cosmic Jellyfish",
-    "imageUrl": "https://picsum.photos/seed/jellyfish/800/600",
-    "platform": "Gemini",
-    "date": "2025-02-08",
-    "tags": "digital art, space, creatures",
-    "prompt": "A bioluminescent jellyfish floating through a nebula in deep space, with trailing tentacles made of starlight, ultra-detailed digital art, dark background with vibrant purples and blues"
-  },
-  {
     "slug": "neon-city-rain",
     "title": "Neon City Rain",
     "imageUrl": "https://picsum.photos/seed/neonrain/800/600",

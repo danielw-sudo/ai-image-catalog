@@ -1,6 +1,6 @@
 ### 84, Charing Cross Road
 
-![84, Charing Cross Road](https://lh3.googleusercontent.com/gg/AMW1TPo0dVH6rBtf_3jdkfL4hSvf63et-lZxpHun0Jupnj5xrFQcqYNwb5TnybT0I9rrtAUmIUrYySVAM5oqke_WDyp3yXueh3kMIG2Tl0zwizT9B_HvgMkXNDEYCL8eQIxJ4Dj9KrFHYTGuNga1hs5Btc_nVbZnK5et2v0suymPX-yHNHLAk0Rl2F-aNUruxFutwvqavmMFnB_u-7xQZYupCCQNNHXIVGaPWRMg9LsDZMSIHhVRNQqTuIYE7ZEJ7jairvChVXsI-k3F2rG_IYXF9ae-wf57m8Vg1bTJ-ndsCXK3XFctf_MO8cWzw-RkIu_xRDIiw40oBicC1uPOeb7q4CVS=s1024-rj)
+![84, Charing Cross Road](https://lh3.googleusercontent.com/gg/AMW1TPqVHJso3PS_7CxqzlN06KeI4up69YFxbzXV6FesnBBqMO-o-ee5enPaKXfTAPm_8NIlOhpwi8afKP4ExW2J-xH-lDq8JshR3F34OxRwaZfCMbWlzjCWH51SJ0Ft7vAG08r9fFjHT0Z095r-My5Ox_K79qGvdajcs6QunrKMJXR-1gpxWkgB=s1024-rj-mp2)
 
 - **Platform:** Gemini
 - **Date:** 2026-02-09

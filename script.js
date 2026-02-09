@@ -481,6 +481,7 @@ function editEntry(slug) {
   // Update form UI for edit mode
   document.getElementById('form-heading').textContent = 'Edit Entry';
   document.getElementById('github-save-btn').textContent = 'Update on GitHub';
+  document.getElementById('form-delete-btn').style.display = 'inline-block';
   document.getElementById('form-panel').classList.add('open');
   document.getElementById('markdown-output').classList.remove('visible');
 
@@ -492,7 +493,13 @@ function cancelEdit() {
   editingSlug = null;
   document.getElementById('form-heading').textContent = 'Add New Entry';
   document.getElementById('github-save-btn').textContent = 'Save to GitHub';
+  document.getElementById('form-delete-btn').style.display = 'none';
   clearForm();
+}
+
+function deleteFromForm() {
+  if (!editingSlug) return;
+  confirmDelete(editingSlug);
 }
 
 // ============================================
@@ -659,6 +666,13 @@ async function executeDelete() {
     // Update local state
     allEntries = allEntries.filter(function(e) { return e.slug !== slug; });
     renderCatalog(getFilteredEntries());
+
+    // Close form if we deleted from edit mode
+    if (editingSlug === slug) {
+      cancelEdit();
+      document.getElementById('form-panel').classList.remove('open');
+    }
+
     showToast('Deleted "' + entry.title + '"');
 
   } catch (err) {
@@ -881,6 +895,7 @@ function setupEventListeners() {
   document.getElementById('copy-btn').addEventListener('click', copyMarkdown);
   document.getElementById('github-save-btn').addEventListener('click', saveToGitHub);
   document.getElementById('download-btn').addEventListener('click', downloadEntry);
+  document.getElementById('form-delete-btn').addEventListener('click', deleteFromForm);
   document.getElementById('copy-again-btn').addEventListener('click', function() {
     var md = document.getElementById('md-preview').textContent;
     copyToClipboard(md);

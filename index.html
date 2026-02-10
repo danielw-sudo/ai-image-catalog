@@ -29,13 +29,8 @@
 
   <div class="toolbar">
     <div class="toolbar-left">
-      <input type="text" class="search-input" id="search" placeholder="Search prompts, titles, tags...">
-      <div class="filter-buttons">
-        <button class="filter-btn active" data-platform="all">All</button>
-        <button class="filter-btn" data-platform="Gemini">Gemini</button>
-        <button class="filter-btn" data-platform="Grok">Grok</button>
-        <button class="filter-btn" data-platform="Meta AI">Meta AI</button>
-      </div>
+      <input type="text" class="search-input" id="search" placeholder="Search prompts, titles, tags, models...">
+      <div class="filter-buttons" id="tag-filters"></div>
     </div>
     <div class="toolbar-right">
       <button class="dark-mode-btn" id="dark-mode-toggle" title="Switch to dark mode"></button>
@@ -69,6 +64,12 @@
           <label for="settings-token">Personal Access Token</label>
           <input type="password" id="settings-token" placeholder="ghp_xxxxxxxxxxxx">
         </div>
+      </div>
+      <div class="settings-divider"></div>
+      <h3 class="settings-section-title">Customization</h3>
+      <div class="form-group full-width">
+        <label for="settings-tagline">Header Tagline <span class="optional">(max 150 characters)</span></label>
+        <input type="text" id="settings-tagline" placeholder="Your AI Generation Log" maxlength="150">
       </div>
       <p class="settings-hint">Need a token? Go to GitHub &gt; Settings &gt; Developer settings &gt; Personal access tokens &gt; Fine-grained tokens. Grant <strong>Contents: Read and write</strong> access to your repo.</p>
       <div class="settings-actions">
@@ -150,7 +151,8 @@
   </main>
 
   <footer class="site-footer">
-    <p>Vibe coded with <a href="https://claude.ai/code" target="_blank" rel="noopener">Claude AI</a> &middot; Made by Daniel &middot; v1.0.0 &middot; <a href="https://github.com/danielw-sudo/ai-image-catalog" target="_blank" rel="noopener">GitHub</a></p>
+    <p>Vibe coded with <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude AI</a> &middot; Made by Daniel &middot; v1.1.0</p>
+    <p class="footer-links">&#x1F4D6; <a href="https://github.com/danielw-sudo/ai-image-catalog#readme" target="_blank" rel="noopener noreferrer">How to Use</a> &middot; &#x1F419; <a href="https://github.com/danielw-sudo/ai-image-catalog" target="_blank" rel="noopener noreferrer">GitHub</a></p>
   </footer>
 
   <!-- Delete Confirmation Modal -->

@@ -94,7 +94,15 @@ body {
 
 .filter-buttons {
   display: flex;
+  align-items: center;
   gap: 0.35rem;
+}
+
+.filter-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6b7280;
+  margin-right: 0.15rem;
 }
 
 .filter-btn {
@@ -245,6 +253,17 @@ body {
 
 .settings-hint strong {
   color: #374151;
+}
+
+.settings-divider {
+  border-top: 1px solid #e5e7eb;
+  margin: 1.25rem 0;
+}
+
+.settings-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
 }
 
 .settings-actions {
@@ -526,6 +545,13 @@ body {
   margin-bottom: 0.6rem;
 }
 
+.card-meta-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+}
+
 .platform-badge {
   padding: 0.15rem 0.55rem;
   border-radius: 4px;
@@ -575,21 +601,17 @@ body {
 
 .prompt-actions {
   display: flex;
-  gap: 0.75rem;
+  justify-content: flex-end;
   margin-top: 0.4rem;
 }
 
-.prompt-toggle,
-.prompt-copy {
+.prompt-toggle {
   background: none;
   border: none;
   font-size: 0.78rem;
   font-weight: 600;
   cursor: pointer;
   padding: 0;
-}
-
-.prompt-toggle {
   color: #6366f1;
 }
 
@@ -598,10 +620,19 @@ body {
 }
 
 .prompt-copy {
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.7rem;
+  font-weight: 600;
   color: #9ca3af;
+  cursor: pointer;
+  transition: all 0.15s;
 }
 
 .prompt-copy:hover {
+  border-color: #6366f1;
   color: #6366f1;
 }
 
@@ -616,7 +647,6 @@ body {
   color: #9ca3af;
   cursor: pointer;
   transition: all 0.15s;
-  margin-left: auto;
 }
 
 .share-btn:hover {
@@ -624,23 +654,14 @@ body {
   color: #6366f1;
 }
 
-/* --- Card Actions (Edit) --- */
-.card-actions {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 0.75rem;
-  padding-top: 0.6rem;
-  border-top: 1px solid #f3f4f6;
-}
-
 .card-edit-btn {
   background: none;
   border: 1px solid #e5e7eb;
-  border-radius: 6px;
-  padding: 0.25rem 0.7rem;
-  font-size: 0.78rem;
+  border-radius: 4px;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  color: #6b7280;
+  color: #9ca3af;
   cursor: pointer;
   transition: all 0.15s;
 }
@@ -811,6 +832,10 @@ body {
   text-decoration: underline;
 }
 
+.footer-links {
+  margin-top: 0.35rem;
+}
+
 /* --- Dark Mode Transition --- */
 body,
 .toolbar,
@@ -854,6 +879,10 @@ body.dark .search-input {
 body.dark .search-input:focus {
   border-color: #6366f1;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+body.dark .filter-label {
+  color: #94a3b8;
 }
 
 body.dark .filter-btn {
@@ -923,14 +952,6 @@ body.dark .card-prompt {
   color: #94a3b8;
 }
 
-body.dark .prompt-copy {
-  color: #64748b;
-}
-
-body.dark .prompt-copy:hover {
-  color: #6366f1;
-}
-
 body.dark .share-btn {
   border-color: #334155;
   color: #64748b;
@@ -941,16 +962,22 @@ body.dark .share-btn:hover {
   color: #6366f1;
 }
 
-body.dark .card-actions {
-  border-top-color: #334155;
-}
-
 body.dark .card-edit-btn {
   border-color: #334155;
   color: #64748b;
 }
 
 body.dark .card-edit-btn:hover {
+  border-color: #6366f1;
+  color: #6366f1;
+}
+
+body.dark .prompt-copy {
+  border-color: #334155;
+  color: #64748b;
+}
+
+body.dark .prompt-copy:hover {
   border-color: #6366f1;
   color: #6366f1;
 }
@@ -990,6 +1017,14 @@ body.dark .form-group textarea:focus {
 
 body.dark .settings-panel {
   background: #1e293b;
+}
+
+body.dark .settings-divider {
+  border-top-color: #334155;
+}
+
+body.dark .settings-section-title {
+  color: #f1f5f9;
 }
 
 body.dark .settings-hint {

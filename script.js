@@ -64,6 +64,8 @@ function loadSettingsIntoForm() {
   document.getElementById('settings-repo').value = s.repo || '';
   document.getElementById('settings-branch').value = s.branch || 'main';
   document.getElementById('settings-token').value = s.token || '';
+  document.getElementById('settings-tagline').value = s.tagline || '';
+  applyTagline();
 }
 
 function saveSettingsFromForm() {
@@ -71,11 +73,21 @@ function saveSettingsFromForm() {
     owner: document.getElementById('settings-owner').value.trim(),
     repo: document.getElementById('settings-repo').value.trim(),
     branch: document.getElementById('settings-branch').value.trim() || 'main',
-    token: document.getElementById('settings-token').value.trim()
+    token: document.getElementById('settings-token').value.trim(),
+    tagline: document.getElementById('settings-tagline').value.trim()
   };
   persistSettings(settings);
   updateConnectionStatus();
+  applyTagline();
   showToast('Settings saved');
+}
+
+function applyTagline() {
+  var s = getSettings();
+  var subtitle = document.querySelector('.subtitle');
+  if (subtitle) {
+    subtitle.textContent = s.tagline || 'Your AI Generation Log';
+  }
 }
 
 function updateConnectionStatus() {
@@ -172,6 +184,7 @@ async function loadCatalog() {
     if (!response.ok) throw new Error('Could not load entries.json');
 
     allEntries = await response.json();
+    buildTagFilters();
     renderCatalog(getFilteredEntries());
   } catch (err) {
     grid.innerHTML = '';
@@ -245,7 +258,11 @@ function createCardHTML(entry) {
         '<div class="card-meta">' +
           (entry.platform ? '<span class="platform-badge ' + platformClass + '">' + escapeHTML(entry.platform) + '</span>' : '') +
           (entry.date ? '<span class="card-date">' + escapeHTML(entry.date) + '</span>' : '') +
-          '<button class="share-btn" onclick="shareEntry(\'' + escapeAttr(slug) + '\')" title="Share on X/Twitter">Share</button>' +
+          '<div class="card-meta-actions">' +
+            '<button class="prompt-copy" onclick="copyPrompt(\'' + escapeAttr(slug) + '\')">Copy prompt</button>' +
+            '<button class="card-edit-btn" onclick="editEntry(\'' + escapeAttr(slug) + '\')">Edit</button>' +
+            '<button class="share-btn" onclick="shareEntry(\'' + escapeAttr(slug) + '\')" title="Share on X/Twitter">Share</button>' +
+          '</div>' +
         '</div>' +
         (tagsHTML ? '<div class="card-tags">' + tagsHTML + '</div>' : '') +
         (entry.prompt ? (
@@ -253,15 +270,9 @@ function createCardHTML(entry) {
             '<div class="prompt-text" id="prompt-' + escapeAttr(slug) + '" data-full="' + escapeAttr(entry.prompt) + '" data-truncated="' + escapeAttr(displayPrompt) + '" data-expanded="false">' +
               escapeHTML(displayPrompt) +
             '</div>' +
-            '<div class="prompt-actions">' +
-              promptToggle +
-              '<button class="prompt-copy" onclick="copyPrompt(\'' + escapeAttr(slug) + '\')">Copy prompt</button>' +
-            '</div>' +
+            (isTruncated ? '<div class="prompt-actions">' + promptToggle + '</div>' : '') +
           '</div>'
         ) : '') +
-        '<div class="card-actions">' +
-          '<button class="card-edit-btn" onclick="editEntry(\'' + escapeAttr(slug) + '\')">Edit</button>' +
-        '</div>' +
       '</div>' +
     '</article>'
   );
@@ -323,7 +334,9 @@ function getFilteredEntries() {
 
   if (activeFilter !== 'all') {
     filtered = filtered.filter(function(e) {
-      return e.platform.toLowerCase().includes(activeFilter.toLowerCase());
+      if (!e.tags) return false;
+      var tags = e.tags.split(',').map(function(t) { return t.trim().toLowerCase(); });
+      return tags.indexOf(activeFilter.toLowerCase()) >= 0;
     });
   }
 
@@ -345,6 +358,62 @@ function getFilteredEntries() {
 function filterEntries() {
   displayLimit = ENTRIES_PER_PAGE;
   renderCatalog(getFilteredEntries());
+}
+
+// ============================================
+// Tag Filters
+// ============================================
+
+var FALLBACK_TAGS = ['Beauty', 'Cutie', 'Scenery'];
+
+function getTopTags(entries, count) {
+  var freq = {};
+  entries.forEach(function(e) {
+    if (!e.tags) return;
+    e.tags.split(',').forEach(function(t) {
+      var tag = t.trim();
+      if (!tag) return;
+      var key = tag.toLowerCase();
+      if (!freq[key]) freq[key] = { name: tag, count: 0 };
+      freq[key].count++;
+    });
+  });
+
+  var sorted = Object.keys(freq).sort(function(a, b) {
+    return freq[b].count - freq[a].count;
+  });
+
+  if (sorted.length < count) {
+    return FALLBACK_TAGS;
+  }
+
+  return sorted.slice(0, count).map(function(key) {
+    return freq[key].name;
+  });
+}
+
+function buildTagFilters() {
+  var container = document.getElementById('tag-filters');
+  var topTags = getTopTags(allEntries, 3);
+
+  var html = '<span class="filter-label">Tags:</span>';
+  html += '<button class="filter-btn' + (activeFilter === 'all' ? ' active' : '') + '" data-tag="all">All</button>';
+  topTags.forEach(function(tag) {
+    var isActive = activeFilter.toLowerCase() === tag.toLowerCase();
+    html += '<button class="filter-btn' + (isActive ? ' active' : '') + '" data-tag="' + escapeAttr(tag) + '">' + escapeHTML(tag) + '</button>';
+  });
+
+  container.innerHTML = html;
+
+  // Attach click handlers
+  container.querySelectorAll('.filter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      container.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeFilter = btn.getAttribute('data-tag');
+      filterEntries();
+    });
+  });
 }
 
 // ============================================
@@ -533,9 +602,7 @@ async function saveToGitHub() {
     searchQuery = '';
     displayLimit = ENTRIES_PER_PAGE;
     document.getElementById('search').value = '';
-    document.querySelectorAll('.filter-btn').forEach(function(b) {
-      b.classList.toggle('active', b.getAttribute('data-platform') === 'all');
-    });
+    buildTagFilters();
     renderCatalog(getFilteredEntries());
 
     cancelEdit();
@@ -871,17 +938,6 @@ function setupEventListeners() {
   document.getElementById('search').addEventListener('input', function(e) {
     searchQuery = e.target.value;
     filterEntries();
-  });
-
-  // Platform filter buttons
-  var filterBtns = document.querySelectorAll('.filter-btn');
-  filterBtns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      filterBtns.forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      activeFilter = btn.getAttribute('data-platform');
-      filterEntries();
-    });
   });
 
   // Form buttons

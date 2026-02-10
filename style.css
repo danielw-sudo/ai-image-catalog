@@ -38,6 +38,16 @@ body {
   font-size: 1rem;
 }
 
+.header-logo {
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.header-logo:hover {
+  opacity: 0.85;
+}
+
 .header-stats {
   margin-top: 1rem;
   font-size: 0.85rem;
@@ -809,6 +819,25 @@ body {
   opacity: 1;
 }
 
+/* --- Footer --- */
+.site-footer {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-size: 0.82rem;
+  color: #9ca3af;
+  border-top: 1px solid #e5e7eb;
+}
+
+.site-footer a {
+  color: #6366f1;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
 /* --- Dark Mode Transition --- */
 body,
 .toolbar,
@@ -1060,6 +1089,15 @@ body.dark .modal p {
 
 body.dark .toast {
   background: #334155;
+}
+
+body.dark .site-footer {
+  color: #64748b;
+  border-top-color: #334155;
+}
+
+body.dark .site-footer a {
+  color: #818cf8;
 }
 
 /* --- Responsive --- */

@@ -3,15 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Image Catalog</title>
-  <meta name="description" content="A curated collection of AI-generated images with prompts">
+  <title>GenLog - AI Generation Log</title>
+  <meta name="description" content="A tiny tool for AIGC creators to catalog prompts and images">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="GenLog - AI Generation Log">
+  <meta property="og:description" content="A tiny tool for AIGC creators to catalog prompts and images">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://danielw-sudo.github.io/ai-image-catalog/">
+
+  <!-- Favicon (inline SVG lightning bolt) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="site-header">
-    <h1>AI Image Catalog</h1>
-    <p class="subtitle">A curated collection of AI-generated images with prompts</p>
+    <h1><a href="./" class="header-logo">⚡ GenLog</a></h1>
+    <p class="subtitle">Your AI Generation Log</p>
     <div class="header-stats">
       <span id="entry-count">0 entries</span>
     </div>
@@ -138,6 +148,10 @@
       <button class="btn btn-load-more" id="load-more-btn">Load More</button>
     </div>
   </main>
+
+  <footer class="site-footer">
+    <p>Vibe coded with <a href="https://claude.ai/code" target="_blank" rel="noopener">Claude AI</a> &middot; Made by Daniel &middot; v1.0.0 &middot; <a href="https://github.com/danielw-sudo/ai-image-catalog" target="_blank" rel="noopener">GitHub</a></p>
+  </footer>
 
   <!-- Delete Confirmation Modal -->
   <div class="modal-overlay" id="modal-overlay" style="display: none;">

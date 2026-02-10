@@ -1,6 +1,6 @@
 ### 84, Charing Cross Road
 
-![84, Charing Cross Road](https://lh3.googleusercontent.com/gg/AMW1TPqVHJso3PS_7CxqzlN06KeI4up69YFxbzXV6FesnBBqMO-o-ee5enPaKXfTAPm_8NIlOhpwi8afKP4ExW2J-xH-lDq8JshR3F34OxRwaZfCMbWlzjCWH51SJ0Ft7vAG08r9fFjHT0Z095r-My5Ox_K79qGvdajcs6QunrKMJXR-1gpxWkgB=s1024-rj-mp2)
+![84, Charing Cross Road](https://pbs.twimg.com/media/HAYNKyfWIAAWL89?format=jpg&name=medium)
 
 - **Platform:** Gemini
 - **Date:** 2026-02-09

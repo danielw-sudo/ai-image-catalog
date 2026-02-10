@@ -7,3 +7,6 @@ Thumbs.db
 
 # Legacy catalog file (replaced by entries.json)
 catalog.md
+
+# Dev log (local only)
+DEV_LOG.md
